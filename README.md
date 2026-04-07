@@ -63,7 +63,6 @@ npm run dev
 | `POST /books/{bookUid}/finalization` | 포토북 최종화 처리 |
 | `POST /orders/estimate` | 주문 견적(가격) 조회 |
 | `POST /orders` | 주문 생성 및 결제 |
-| `GET /orders`, `GET /orders/{orderUid}` | 주문 조회 |
 | `GET /credits` | 계정 충전금 잔액 조회 |
 
 ## AI 도구 사용 내역
