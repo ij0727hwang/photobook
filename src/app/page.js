@@ -53,10 +53,9 @@ export default function Home() {
         <div className={styles.steps}>
           <div className={styles.step}>
             <div className={styles.stepNumber}>1</div>
-            <h3 className={styles.stepTitle}>판형 & 템플릿 선택</h3>
+            <h3 className={styles.stepTitle}>표자 사진 선택</h3>
             <p className={styles.stepDesc}>
-              A4, A5, 스퀘어 중 원하는 판형을 선택하고
-              마음에 드는 디자인 템플릿을 골라보세요.
+              마음에 드는 표지 사진을 선택하세요.
             </p>
           </div>
           <div className={styles.step}>
@@ -83,20 +82,12 @@ export default function Home() {
         <h2 className={styles.sectionTitle}>왜 MyPhotoBook인가요?</h2>
         <p className={styles.sectionSub}>포토북 제작이 이렇게 쉬웠던 적이 없습니다</p>
         <div className={styles.featureGrid}>
-          <div className={styles.feature}>
-            <div className={styles.featureIcon}>🎨</div>
-            <h3 className={styles.featureTitle}>다양한 판형</h3>
-            <p className={styles.featureDesc}>
-              A4, A5, 스퀘어 하드커버 등 용도에 맞는
-              판형을 자유롭게 선택할 수 있습니다.
-            </p>
-          </div>
+
           <div className={styles.feature}>
             <div className={styles.featureIcon}>📐</div>
-            <h3 className={styles.featureTitle}>프로 템플릿</h3>
+            <h3 className={styles.featureTitle}>간편함</h3>
             <p className={styles.featureDesc}>
-              디자이너가 만든 전문 템플릿으로
-              사진만 올리면 감성 포토북이 완성됩니다.
+              복잡한 과정은 생략하세요. 사진과 간단한 정보만 있으면 됩니다.
             </p>
           </div>
           <div className={styles.feature}>
