@@ -25,9 +25,6 @@ export default function Home() {
               <Link href="/create" className="btn btn-primary btn-lg">
                 포토북 만들기 →
               </Link>
-              <Link href="/orders" className="btn btn-secondary btn-lg">
-                주문 내역
-              </Link>
             </div>
           </div>
           <div className={styles.heroVisual}>

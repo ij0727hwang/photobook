@@ -26,12 +26,6 @@ export default function Header() {
           >
             포토북 만들기
           </Link>
-          <Link
-            href="/orders"
-            className={`${styles.navLink} ${pathname.startsWith('/orders') ? styles.navLinkActive : ''}`}
-          >
-            주문내역
-          </Link>
           <Link href="/create" className={`btn btn-primary btn-sm ${styles.ctaBtn}`}>
             시작하기
           </Link>
