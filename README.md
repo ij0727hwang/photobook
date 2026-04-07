@@ -1,25 +1,26 @@
-# MyPhotoBook
+# MyPhotoBook (Squarebook Edition)
 
-> 사진을 업로드하면 아름다운 포토북으로 제작해주는 웹 애플리케이션
+> 스퀘어 하드커버 포토북을 간편하게 제작하고 주문할 수 있는 프리미엄 웹 애플리케이션
 
 ## 서비스 소개
 
-**MyPhotoBook**은 사용자가 사진을 업로드하면 SweetBook Book Print API를 통해 실물 포토북으로 제작·주문할 수 있는 웹 서비스입니다.
+**MyPhotoBook**은 사용자가 사진을 업로드하면 고품질 스퀘어 하드커버 포토북으로 자동 구성하여, SweetBook Book Print API를 통해 실제 상품으로 제작 및 주문할 수 있는 웹 서비스입니다. 
+
+기존의 복잡한 편집 과정을 생략하고, "사진만 올리면 알아서 만들어주는" 직관적이고 심플한 워크플로우를 제공합니다.
 
 ### 타겟 고객
-- 여행, 일상, 가족 사진을 포토북으로 만들고 싶은 20~40대
-- 복잡한 편집 없이 사진만 올려서 포토북을 만들고 싶은 사람
+- 여행, 일상, 가족, 반려동물(Puppy Log) 사진을 고급스러운 스퀘어 포토북으로 남기고 싶은 분
+- 복잡한 편집 없이 빠르고 간편하게 포토북을 제작하고 싶은 사용자
 
 ### 주요 기능
-- 📐 **3가지 판형 선택** — A4 소프트커버, A5 소프트커버, 스퀘어 하드커버
-- 🎨 **전문 템플릿** — 구글포토북 A/B/C 테마 템플릿 자동 적용
-- 📷 **드래그&드롭 사진 업로드** — 사진을 끌어다 놓으면 자동 배치
-- 📖 **표지 정보 입력** — 포토북 제목, 저자 설정
-- 👁️ **미리보기** — 업로드 전 설정 확인
-- 🛒 **원클릭 포토북 생성** — 사진 업로드 → 표지 → 내지 → 최종화까지 자동
-- 💰 **견적 조회 & 주문** — 가격 확인 후 배송 정보 입력하여 주문
-- 📦 **주문 관리** — 주문 목록, 상세 조회, 주문 취소 지원
-- 📍 **주문 상태 추적** — 결제완료 → 제작 → 배송까지 타임라인 UI
+- 📐 **단일 규격 최적화** — 스퀘어 하드커버(Square Hardcover) 규격에 특화된 유려한 디자인
+- 📄 **유연한 페이지 설정** — 24페이지부터 최대 130페이지까지 원하는 분량의 포토북 제작 가능
+- 🎨 **자동 레이아웃** — 표지와 내지 사진을 업로드하면 템플릿에 맞추어 자동으로 사진 분배 및 배치
+- 📷 **직관적인 사진 업로드** — 로딩 상태와 진행률을 명확히 보여주는 깔끔한 업로드 UI
+- 📖 **간편한 메타데이터 입력** — 포토북 제목, 저자 정보 등을 손쉽게 설정
+- 🛒 **원클릭 포토북 생성** — 책 생성 → 사진 업로드 → 표지/내지 구성 → 최종화까지 자동화된 파이프라인
+- 💰 **견적 및 주문** — 완성된 포토북의 가격을 확인하고 배송 정보를 입력하여 즉시 주문
+- 📦 **진행 상태 추적** — 주문 목록 및 상세 정보 조회를 통한 제작/배송 상태 확인
 
 ## 실행 방법
 
@@ -31,8 +32,8 @@
 
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/YOUR_USERNAME/myphotobook.git
-cd myphotobook
+git clone https://github.com/ij0727hwang/photobook.git
+cd photobook
 
 # 2. 의존성 설치
 npm install
@@ -49,88 +50,52 @@ npm run dev
 브라우저에서 [http://localhost:3000](http://localhost:3000) 으로 접속하세요.
 
 ### 더미 데이터
-`public/dummy/` 폴더에 6장의 예시 사진이 포함되어 있습니다. 포토북 제작 시 이 사진들을 사용하거나 직접 사진을 업로드할 수 있습니다.
+`public/dummy/` 폴더에 예시 사진이 포함되어 있습니다. 포토북 제작 시 이 사진들을 활용하여 테스트해볼 수 있습니다.
 
-## 사용한 API 목록
+## 사용한 요금/주문 API (SweetBook)
 
 | API | 용도 |
 |-----|------|
-| `GET /book-specs` | 판형 목록 조회 (A4, A5, 스퀘어) |
-| `GET /templates` | 판형에 맞는 표지/내지 템플릿 조회 |
-| `GET /templates/{templateUid}` | 템플릿 상세 조회 (파라미터 확인) |
-| `POST /books` | 새 포토북 생성 (draft 상태) |
-| `GET /books` | 포토북 목록 조회 |
-| `POST /books/{bookUid}/photos` | 사진 업로드 |
-| `POST /books/{bookUid}/cover` | 표지 추가 (템플릿 + 파라미터) |
-| `POST /books/{bookUid}/contents` | 내지 페이지 추가 (갤러리 템플릿) |
-| `POST /books/{bookUid}/finalization` | 포토북 최종화 |
-| `POST /orders/estimate` | 주문 견적 조회 |
-| `POST /orders` | 주문 생성 (충전금 차감) |
-| `GET /orders` | 주문 목록 조회 |
-| `GET /orders/{orderUid}` | 주문 상세 조회 |
-| `POST /orders/{orderUid}/cancel` | 주문 취소 (환불) |
-| `GET /credits` | 충전금 잔액 조회 |
+| `GET /book-specs` | 판형 정보 조회 |
+| `GET /templates` | 템플릿 목록 조회 |
+| `POST /books` | 새 포토북 초안 생성 |
+| `POST /books/{bookUid}/photos` | 포토북에 사진 리소스 업로드 |
+| `POST /books/{bookUid}/cover` | 표지 구성 추가 |
+| `POST /books/{bookUid}/contents` | 내지 페이지 구성 추가 |
+| `POST /books/{bookUid}/finalization` | 포토북 최종화 처리 |
+| `POST /orders/estimate` | 주문 견적(가격) 조회 |
+| `POST /orders` | 주문 생성 및 결제 |
+| `GET /orders`, `GET /orders/{orderUid}` | 주문 조회 |
+| `GET /credits` | 계정 충전금 잔액 조회 |
 
 ## AI 도구 사용 내역
 
 | AI 도구 | 활용 내용 |
 |---------|----------|
-| Gemini (Antigravity) | 전체 프로젝트 아키텍처 설계 및 풀스택 코드 구현 |
-| Gemini (Antigravity) | SweetBook API 문서 분석 및 연동 코드 작성 |
-| Gemini (Antigravity) | 프리미엄 다크 테마 UI/UX 디자인 시스템 구축 |
-| Gemini (Image Gen) | 더미 데이터용 예시 사진 6장 생성 |
-| Gemini (Antigravity) | README.md 작성 |
+| Gemini (Antigravity) | 스퀘어 하드커버 전용 워크플로우로 프로젝트 아키텍처 리팩토링 |
+| Gemini (Antigravity) | SweetBook API 통합 및 자동화 파이프라인 구축 |
+| Gemini (Antigravity) | 프리미엄 다크 모드 기반의 UI/UX 디자인 개선 |
+| Gemini (Image Gen) | 더미 데이터(표지, 내지)용 예시 사진 생성 |
 
 ## 기술 스택
 
 | 영역 | 기술 |
 |------|------|
 | 프론트엔드 | Next.js 14 (App Router), React 18 |
-| 백엔드 | Next.js API Routes (서버사이드 프록시) |
-| 스타일링 | Vanilla CSS (CSS Modules) |
-| API 연동 | SweetBook Book Print API (직접 호출) |
-| 상태관리 | React useState/useEffect |
-
-## 프로젝트 구조
-
-```
-src/
-├── app/
-│   ├── api/                    # 백엔드 API Routes (SweetBook 프록시)
-│   │   ├── book-specs/         # 판형 조회
-│   │   ├── books/              # 책 CRUD, 사진, 표지, 내지, 최종화
-│   │   ├── credits/            # 충전금 조회
-│   │   ├── orders/             # 주문 CRUD, 견적, 취소
-│   │   └── templates/          # 템플릿 조회
-│   ├── create/                 # 포토북 생성 위저드 (6단계)
-│   ├── orders/                 # 주문 목록 & 상세
-│   ├── globals.css             # 디자인 시스템
-│   ├── layout.js               # 루트 레이아웃
-│   └── page.js                 # 랜딩 페이지
-├── components/
-│   ├── Header.js               # 글로벌 네비게이션
-│   └── Header.module.css
-├── lib/
-│   └── sweetbook.js            # SweetBook API 클라이언트
-public/
-└── dummy/                      # 예시 사진 (더미 데이터)
-```
+| 백엔드 | Next.js API Routes (SweetBook API 프록시 적용) |
+| 스타일링 | Vanilla CSS (CSS Modules)를 활용한 커스텀 디자인 시스템 |
+| 상태관리 | React Hooks (useState, useEffect 등) |
 
 ## 설계 의도
 
-### 왜 이 서비스를 선택했는가?
-포토북은 디지털 사진을 실물로 만들 수 있는 가장 감성적인 방법입니다. 기존 포토북 서비스들은 복잡한 편집 도구를 요구하지만, MyPhotoBook은 "사진만 올리면 끝"이라는 심플한 경험을 제공합니다.
+### 왜 "스퀘어 하드커버" 전용으로 개편했는가?
+여러 판형과 복잡한 템플릿을 제공하는 것도 좋지만, 사용자가 가장 고민 없이 만족스러운 결과를 얻을 수 있도록 가장 인기있고 트렌디한 "스퀘어 하드커버" 포맷에 집중했습니다. 규격이 단순해짐으로써 사진 업로드와 배치가 더욱 빠르고 매끄러워졌습니다.
 
-### 비즈니스 가능성
-- **B2C 포토북 서비스**: 일반 소비자 대상 포토북 제작 서비스
-- **B2B 화이트라벨**: 여행사, 유치원, 웨딩 업체 등에 포토북 기능 탑재
-- **구독 모델**: 월간/연간 포토북 자동 제작 (SNS 연동)
+### 비즈니스 확장 (Puppy Log 등)
+특정 테마(예: 반려동물 성장 일기 "Puppy Log", 여행 기록 등)에 맞춘 맞춤형 포토북 서비스로 쉽게 변형할 수 있는 구조로 설계되었습니다.
 
-### 더 시간이 있었다면 추가했을 기능
-- 사진 순서 드래그&드롭 재배치
-- 포토북 미리보기 (페이지별 렌더링)
-- 사용자 인증 (로그인/회원가입)
-- 다중 수량 주문 지원
-- 웹훅 연동으로 실시간 주문 상태 업데이트
-- 사진 필터/보정 기능
-- 다국어 지원 (영어, 일본어)
+### 향후 추가 가능한 기능
+- 사진 순서 드래그&드롭 기반 자유 재배치 기능
+- 3D 또는 펼침면 기반의 사실적인 포토북 미리보기
+- 소셜/OAuth 로그인 및 사용자 계정 관리 시스템 연동
+- 다수의 상품을 한번에 주문하는 장바구니 기능
